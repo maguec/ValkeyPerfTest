@@ -1,7 +1,7 @@
 resource "google_memorystore_instance" "valkey" {
   project     = var.gcp_project_id
   instance_id = "valkey-${random_id.server.hex}"
-  shard_count = 1
+  shard_count = 3
   desired_auto_created_endpoints {
     network    = google_compute_network.vpc.id
     project_id = var.gcp_project_id
