@@ -11,7 +11,7 @@ variable "gcp_zone" {
 variable "disable_apis" {
   type        = bool
   description = "Do we disable apis when we are done"
-  default     = true
+  default     = false
 }
 
 # You can search using
