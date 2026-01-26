@@ -33,7 +33,7 @@ resource "google_compute_firewall" "full_access_for_user" {
 # Yes, I know every time you use a sleep a puppy dies
 resource "time_sleep" "wait_for_psc_policy" {
   depends_on      = [google_network_connectivity_service_connection_policy.psc]
-  create_duration = "30s"
+  create_duration = "120s"
 }
 
 resource "google_network_connectivity_service_connection_policy" "psc" {
@@ -51,7 +51,7 @@ resource "google_network_connectivity_service_connection_policy" "psc" {
 resource "google_compute_subnetwork" "psc_subnet" {
   project       = var.gcp_project_id
   name          = "subnet-${random_id.server.hex}"
-  ip_cidr_range = "10.0.0.248/29"
+  ip_cidr_range = "10.0.0.0/26"
   region        = join("-", slice(split("-", var.gcp_zone), 0, 2))
   network       = google_compute_network.vpc.id
 }

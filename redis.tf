@@ -29,11 +29,12 @@ resource "google_redis_cluster" "redis" {
   }
 
   psc_configs {
-    network = google_compute_network.vpc.id
+    network = "projects/${var.gcp_project_id}/global/networks/vpc-${random_id.server.hex}"
   }
 
   depends_on = [
-    time_sleep.wait_for_psc_policy
+    time_sleep.wait_for_psc_policy,
+    google_memorystore_instance.valkey
   ]
 }
 

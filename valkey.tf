@@ -3,7 +3,7 @@ resource "google_memorystore_instance" "valkey" {
   instance_id = "valkey-${random_id.server.hex}"
   shard_count = 3
   desired_auto_created_endpoints {
-    network    = google_compute_network.vpc.id
+    network    = google_compute_network.vpc.self_link
     project_id = var.gcp_project_id
   }
   location                = join("-", slice(split("-", var.gcp_zone), 0, 2))
