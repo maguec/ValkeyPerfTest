@@ -42,7 +42,7 @@ resource "google_network_connectivity_service_connection_policy" "psc" {
   location      = join("-", slice(split("-", var.gcp_zone), 0, 2))
   service_class = "gcp-memorystore"
   description   = "PSC for Memorystore"
-  network       = google_compute_network.vpc.id
+  network       = "projects/${var.gcp_project_id}/global/networks/vpc-${random_id.server.hex}"
   psc_config {
     subnetworks = [google_compute_subnetwork.psc_subnet.id]
   }
