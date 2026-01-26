@@ -33,7 +33,7 @@ resource "google_redis_cluster" "redis" {
   }
 
   depends_on = [
-    google_network_connectivity_service_connection_policy.psc
+    time_sleep.wait_for_psc_policy
   ]
 }
 

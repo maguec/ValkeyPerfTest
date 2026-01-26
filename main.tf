@@ -15,3 +15,10 @@ resource "google_project_service" "compute" {
   disable_dependent_services = var.disable_apis
   disable_on_destroy         = var.disable_apis
 }
+
+resource "google_project_service" "networkconnectivity" {
+  project                    = var.gcp_project_id
+  service                    = "networkconnectivity.googleapis.com"
+  disable_dependent_services = var.disable_apis
+  disable_on_destroy         = var.disable_apis
+}

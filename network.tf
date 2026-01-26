@@ -30,6 +30,12 @@ resource "google_compute_firewall" "full_access_for_user" {
 #############################################################################
 # PSC Setup
 #############################################################################
+# Yes, I know every time you use a sleep a puppy dies
+resource "time_sleep" "wait_for_psc_policy" {
+  depends_on      = [google_network_connectivity_service_connection_policy.psc]
+  create_duration = "30s"
+}
+
 resource "google_network_connectivity_service_connection_policy" "psc" {
   project       = var.gcp_project_id
   name          = "psc-${random_id.server.hex}"
