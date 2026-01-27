@@ -10,6 +10,8 @@ resource "google_redis_cluster" "redis" {
   deletion_protection_enabled = false
 
   psc_configs {
+    # Note this looks for all google_network_connectivity_service_connection_policy (network.tf) that have a class matching gcp-memorystore-redis
+    # it will say there's not PSC config if the class doesn't match the polices in the VPC
     network = google_compute_network.vpc.id
   }
 
