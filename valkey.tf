@@ -40,7 +40,7 @@ resource "google_memorystore_instance" "valkey" {
     }
   }
   depends_on = [
-    time_sleep.wait_for_psc_policy
+    google_network_connectivity_service_connection_policy.psc-redis
   ]
 
 }

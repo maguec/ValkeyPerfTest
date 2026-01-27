@@ -5,3 +5,7 @@ output "vm_ssh_command" {
 output "valkey" {
   value = google_memorystore_instance.valkey.endpoints[0].connections[0].psc_auto_connection[0].ip_address
 }
+
+output "redis" {
+  value = google_redis_cluster.redis.discovery_endpoints[0].address
+}

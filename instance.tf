@@ -14,6 +14,7 @@ resource "google_compute_instance" "vm" {
     "startup_script.sh",
     {
       projectid : var.gcp_project_id,
+      redis_ip : google_redis_cluster.redis.discovery_endpoints[0].address
       memorystore_ip : google_memorystore_instance.valkey.endpoints[0].connections[0].psc_auto_connection[0].ip_address,
       region : join("-", slice(split("-", var.gcp_zone), 0, 2)),
     },
@@ -26,7 +27,8 @@ resource "google_compute_instance" "vm" {
   }
 
   network_interface {
-    network = google_compute_network.vpc.name
+    network    = google_compute_network.vpc.name
+    subnetwork = google_compute_subnetwork.psc_subnet.id
     access_config {
       nat_ip = google_compute_address.static.address
     }
