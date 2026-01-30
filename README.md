@@ -41,7 +41,7 @@ for threads in 10 11 12 13 14 15 16; do
         memtier_benchmark --host ${GOOGLE_REDIS_IP} --hide-histogram --cluster-mode --threads ${threads} \
             --clients 50 --ratio=1:5 --pipeline=${pipeline} --test-time=300 --json-out-file=REDIS_${threads}_50_${pipeline}.json
         memtier_benchmark --host ${GOOGLE_VALKEY_IP} --hide-histogram --cluster-mode --threads ${threads} \
-            --clients 50 --ratio=1:5 --pipeline=${pipeline} --test-time=300 --json-out-file=VALKEY8_${threads}_50_${pipeline}.json
+            --clients 50 --ratio=1:5 --pipeline=${pipeline} --test-time=300 --json-out-file=VALKEY9_${threads}_50_${pipeline}.json
     done
 done
 ```
