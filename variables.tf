@@ -28,5 +28,5 @@ variable "instance_project_id" {
 
 variable "machine_type" {
   type    = string
-  default = "n2-standard-8"
+  default = "n2-standard-32"
 }
