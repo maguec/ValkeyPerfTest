@@ -1,7 +1,7 @@
 resource "google_memorystore_instance" "valkey" {
   project     = var.gcp_project_id
   instance_id = "valkey-${random_id.server.hex}"
-  shard_count = 3
+  shard_count = var.cluster_nodes
   count       = local.valkey_count
   desired_auto_created_endpoints {
     # Note this looks for all google_network_connectivity_service_connection_policy (network.tf) that have a class matching gcp-memorystore
@@ -10,7 +10,7 @@ resource "google_memorystore_instance" "valkey" {
     project_id = var.gcp_project_id
   }
   location                = join("-", slice(split("-", var.gcp_zone), 0, 2))
-  replica_count           = 0
+  replica_count           = var.replica_count
   node_type               = "STANDARD_SMALL"
   transit_encryption_mode = "TRANSIT_ENCRYPTION_DISABLED"
   authorization_mode      = "AUTH_DISABLED"

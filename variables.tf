@@ -42,3 +42,15 @@ variable "enable_valkey" {
   type    = bool
   default = true
 }
+
+variable "cluster_nodes" {
+  description = "The number of nodes in each cluster"
+  type        = number
+  default     = 3
+}
+
+variable "replica_count" {
+  description = "The number of replicas in each cluster"
+  type        = number
+  default     = 0
+}

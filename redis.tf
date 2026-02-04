@@ -1,9 +1,9 @@
 resource "google_redis_cluster" "redis" {
   project                     = var.gcp_project_id
   name                        = "redis-cluster-${random_id.server.hex}"
-  shard_count                 = 3
+  shard_count                 = var.cluster_nodes
   region                      = join("-", slice(split("-", var.gcp_zone), 0, 2))
-  replica_count               = 0
+  replica_count               = var.replica_count
   node_type                   = "REDIS_STANDARD_SMALL"
   transit_encryption_mode     = "TRANSIT_ENCRYPTION_MODE_DISABLED"
   authorization_mode          = "AUTH_MODE_DISABLED"
