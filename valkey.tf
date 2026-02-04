@@ -2,6 +2,7 @@ resource "google_memorystore_instance" "valkey" {
   project     = var.gcp_project_id
   instance_id = "valkey-${random_id.server.hex}"
   shard_count = 3
+  count       = local.valkey_count
   desired_auto_created_endpoints {
     # Note this looks for all google_network_connectivity_service_connection_policy (network.tf) that have a class matching gcp-memorystore
     # it will say there's not PSC config if the class doesn't match the polices in the VPC

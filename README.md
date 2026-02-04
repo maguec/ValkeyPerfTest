@@ -24,7 +24,7 @@ ssh -i ~/.ssh/valkey-key tester@<ip-address>
 
 ### Destroy
 ```bash
-terraform destroy
+terraform destroy -var-file tester.tfvars
 ```
 
 ### Let's do some benchmarking
@@ -46,3 +46,14 @@ for threads in 10 11 12 13 14 15 16; do
 done
 ```
 
+
+## Notes
+
+You can disable either Redis Cluster or Memorystore Cluster by modifying the following variables `tester.tfvars` file
+
+```
+# Disable the Redis Cluster
+enable_redis = false
+# Disable the Valkey Cluster
+enable_valkey = false
+```

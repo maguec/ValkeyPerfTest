@@ -8,6 +8,7 @@ resource "google_redis_cluster" "redis" {
   transit_encryption_mode     = "TRANSIT_ENCRYPTION_MODE_DISABLED"
   authorization_mode          = "AUTH_MODE_DISABLED"
   deletion_protection_enabled = false
+  count                       = local.redis_count
 
   psc_configs {
     # Note this looks for all google_network_connectivity_service_connection_policy (network.tf) that have a class matching gcp-memorystore-redis

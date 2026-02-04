@@ -14,8 +14,8 @@ resource "google_compute_instance" "vm" {
     "startup_script.sh",
     {
       projectid : var.gcp_project_id,
-      redis_ip : google_redis_cluster.redis.discovery_endpoints[0].address
-      memorystore_ip : google_memorystore_instance.valkey.endpoints[0].connections[0].psc_auto_connection[0].ip_address,
+      redis_ip : local.redis_ip
+      memorystore_ip : local.valkey_ip
       region : join("-", slice(split("-", var.gcp_zone), 0, 2)),
     },
   )

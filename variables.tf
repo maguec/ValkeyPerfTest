@@ -30,3 +30,15 @@ variable "machine_type" {
   type    = string
   default = "n2-standard-32"
 }
+
+# You can disable or enable a platform here for other uses
+
+variable "enable_redis" {
+  type    = bool
+  default = true
+}
+
+variable "enable_valkey" {
+  type    = bool
+  default = true
+}
