@@ -54,3 +54,9 @@ variable "replica_count" {
   type        = number
   default     = 0
 }
+
+variable "valkey_version" {
+  description = "The version of valkey to use"
+  type        = string
+  default     = "VALKEY_9_0"
+}

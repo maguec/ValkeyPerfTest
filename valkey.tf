@@ -32,7 +32,7 @@ resource "google_memorystore_instance" "valkey" {
       }
     }
   }
-  engine_version              = "VALKEY_9_0"
+  engine_version              = var.valkey_version
   deletion_protection_enabled = false
   mode                        = "CLUSTER"
   persistence_config {

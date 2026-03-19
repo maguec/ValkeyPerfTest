@@ -17,3 +17,9 @@ apt-get install -y make valkey-tools libevent-openssl-2.1-7t64 libevent-2.1-7t64
 cd /tmp
 wget https://github.com/redis/memtier_benchmark/releases/download/2.2.1/memtier-benchmark_2.2.1.noble_amd64.deb
 dpkg -i memtier-benchmark_2.2.1.noble_amd64.deb
+
+# Install UV
+/usr/bin/curl -LsSf https://astral.sh/uv/install.sh | /usr/bin/sh
+/usr/bin/cp /root/.local/bin/uv /usr/local/bin/uv
+/bin/chmod 755 /usr/local/bin/uv
+rm -rf  /root/.local/bin 2>/dev/null || true
